@@ -3,6 +3,7 @@ package com.idaxmx.myapplication
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -46,6 +47,7 @@ class UserList(
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val userItem = UserItem(context, null)
+            userItem.layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             return ViewHolder(userItem)
         }
 
