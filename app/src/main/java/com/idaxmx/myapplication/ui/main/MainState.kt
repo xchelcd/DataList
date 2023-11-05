@@ -1,4 +1,6 @@
-package com.idaxmx.myapplication
+package com.idaxmx.myapplication.ui.main
+
+import com.idaxmx.myapplication.model.User
 
 data class MainState(
     val list: List<User> = emptyList(),

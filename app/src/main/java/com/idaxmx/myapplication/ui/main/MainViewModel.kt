@@ -1,6 +1,7 @@
-package com.idaxmx.myapplication
+package com.idaxmx.myapplication.ui.main
 
 import androidx.lifecycle.ViewModel
+import com.idaxmx.myapplication.model.User
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update

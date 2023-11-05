@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context=".ui.main.MainActivity">
 
 
     <data>
 
-        <import type="com.idaxmx.myapplication.MainState" />
+        <import type="com.idaxmx.myapplication.ui.main.MainState" />
         <import type="com.idaxmx.myapplication.binding.CallbackWithUser"/>
         <import type="com.idaxmx.myapplication.binding.CallbackWithText"/>
 
@@ -21,7 +21,7 @@
 
         <variable
             name="state"
-            type="MainState" />
+            type="com.idaxmx.myapplication.ui.main.MainState" />
     </data>
 
     <LinearLayout
@@ -44,7 +44,7 @@
             app:show="@{!state.list.empty}"
             android:layout_height="wrap_content"/>
 
-        <com.idaxmx.myapplication.UserList
+        <com.idaxmx.myapplication.ui.widget.UserList
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:onUserSelected="@{handleUserSelected}"

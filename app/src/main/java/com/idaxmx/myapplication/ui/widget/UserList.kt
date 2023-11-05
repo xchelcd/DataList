@@ -1,4 +1,4 @@
-package com.idaxmx.myapplication
+package com.idaxmx.myapplication.ui.widget
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.idaxmx.myapplication.model.User
 
 class UserList(
     context: Context,

@@ -4,11 +4,11 @@
 
     <data>
 
-        <import type="com.idaxmx.myapplication.User"/>
+        <import type="com.idaxmx.myapplication.model.User"/>
 
         <variable
             name="user"
-            type="User" />
+            type="com.idaxmx.myapplication.model.User" />
     </data>
 
     <LinearLayout

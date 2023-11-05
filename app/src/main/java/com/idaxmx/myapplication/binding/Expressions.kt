@@ -5,8 +5,8 @@ import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.BindingAdapter
-import com.idaxmx.myapplication.User
-import com.idaxmx.myapplication.UserList
+import com.idaxmx.myapplication.model.User
+import com.idaxmx.myapplication.ui.widget.UserList
 
 @BindingAdapter("app:onUserSelected")
 fun onUserSelected(v: UserList, callback: CallbackWithUser?) {

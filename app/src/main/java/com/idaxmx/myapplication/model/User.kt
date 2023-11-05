@@ -1,4 +1,4 @@
-package com.idaxmx.myapplication
+package com.idaxmx.myapplication.model
 
 data class User(
     val id: String,

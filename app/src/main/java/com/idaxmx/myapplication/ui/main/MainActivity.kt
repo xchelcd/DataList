@@ -1,10 +1,11 @@
-package com.idaxmx.myapplication
+package com.idaxmx.myapplication.ui.main
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.idaxmx.myapplication.databinding.ActivityMainBinding
+import com.idaxmx.myapplication.model.User
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
