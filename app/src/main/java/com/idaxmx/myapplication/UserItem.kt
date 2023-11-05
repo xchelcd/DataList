@@ -22,7 +22,7 @@ class UserItem(
     var data: User? = null
         set(value) {
             field = value
-            binding.nameTextView.text = value?.name
+            binding.user = field
         }
 
 }
