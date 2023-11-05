@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.idaxmx.myapplication.databinding.CellUserBinding
 
 class UserList(
     context: Context,
@@ -16,7 +15,8 @@ class UserList(
     var data: List<User> = emptyList()
         set(value) {
             field = value
-            adapter?.notifyItemRangeChanged(0, value.size)
+            // adapter?.notifyItemRangeChanged(0, value.size)
+            adapter?.notifyDataSetChanged()
         }
 
     init {
@@ -25,14 +25,22 @@ class UserList(
     }
 
 
-    private inner class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
+    inner class Adapter: RecyclerView.Adapter<Adapter.ViewHolder>() {
 
-        private inner class ViewHolder(
+        var onUserSelected: ((User) -> Unit)? = null
+
+        inner class ViewHolder(
             private val userItem: UserItem
         ): RecyclerView.ViewHolder(userItem) {
 
             fun bind(user: User) {
-                userItem.data = user
+                userItem.data = user.also(::addListener)
+            }
+
+            private fun addListener(user: User) {
+                userItem.setOnClickListener {
+                    onUserSelected?.let(user::let)
+                }
             }
         }
 
@@ -41,10 +49,10 @@ class UserList(
             return ViewHolder(userItem)
         }
 
-        override fun getItemCount(): Int = data.size
-
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             data[position].also(holder::bind)
         }
+
+        override fun getItemCount(): Int = data.size
     }
 }
