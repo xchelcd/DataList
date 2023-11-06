@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private var viewModel: MainViewModel = MainViewModel(
         listOf(
-            User("123", "Xchel1111"),
+            User("123", "Xchel"),
             User("123", "Alonso"),
             User("123", "Octavio"),
             User("123", "Antonio"),
