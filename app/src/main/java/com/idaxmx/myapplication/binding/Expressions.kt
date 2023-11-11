@@ -1,6 +1,7 @@
 package com.idaxmx.myapplication.binding
 
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
@@ -31,4 +32,9 @@ fun onTextChange(v: EditText, callbackWithText: CallbackWithText?) {
     v.doOnTextChanged { text, _, _, _ ->
         callbackWithText?.invoke(text.toString())
     }
+}
+
+@BindingAdapter("app:onClick")
+fun onClick(b: Button, callback: Callback) {
+    b.setOnClickListener { callback() }
 }

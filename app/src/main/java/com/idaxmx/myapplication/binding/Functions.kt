@@ -9,3 +9,7 @@ fun interface CallbackWithUser {
 fun interface CallbackWithText {
     operator fun invoke(s: String)
 }
+
+fun interface Callback {
+    operator fun invoke()
+}
