@@ -3,7 +3,7 @@
     <string name="name">*Name</string>
     <string name="lastname">*Lastname</string>
     <string name="weight">Weight</string>
-    <string name="photo_https_photo_name_jpeg">Photo (\'https://.../photo_name.jpeg\')</string>
+    <string name="photo_https_photo_name_jpeg">Photo (\'https://…/photo_name.jpeg\')</string>
     <string name="add">ADD</string>
     <string name="fields_marked_with_are_required">Fields marked with * are required</string>
     <string name="height">*Height</string>
