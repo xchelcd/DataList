@@ -34,6 +34,7 @@ fun onTextChange(v: EditText, callbackWithText: CallbackWithText?) {
     }
 }
 
+
 @BindingAdapter("app:onClick")
 fun onClick(b: Button, callback: Callback) {
     b.setOnClickListener { callback() }

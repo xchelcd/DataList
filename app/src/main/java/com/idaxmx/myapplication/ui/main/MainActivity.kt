@@ -1,11 +1,13 @@
 package com.idaxmx.myapplication.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.idaxmx.myapplication.databinding.ActivityMainBinding
 import com.idaxmx.myapplication.model.User
+import com.idaxmx.myapplication.ui.secondary.SecondaryActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +43,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleUserSelected(user: User) {
-        Toast.makeText(this, user.name, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, user.name, Toast.LENGTH_SHORT).show()
+
+        val id = user.id
+        val name = user.name
+        val bundle = Bundle()
+        bundle.putString("id", id)
+        bundle.putString("name", name)
+
+        val intent = Intent(this, SecondaryActivity::class.java)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 
     private fun render(state: MainState) {
