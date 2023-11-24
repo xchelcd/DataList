@@ -34,10 +34,9 @@ class HeightWidget(
 
     fun setHeight(heightPercentage: Float) {
         bind.userHeight = heightPercentage
-        updateHeightTextView(heightPercentage)
     }
 
-    private fun updateHeightTextView(heightPercentage: Float) {
+    fun updateHeightTextView(heightPercentage: Float) {
         bind.heightTextView.text = heightPercentage.reverseHeightPercentageBase2m()
     }
 

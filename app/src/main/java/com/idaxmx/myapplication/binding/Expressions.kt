@@ -51,4 +51,5 @@ fun layout_constraintGuide_percent(guideline: Guideline, height: Float) {
 @BindingAdapter("app:userHeight")
 fun userHeight(v: HeightWidget, h: Float) {
     v.setHeight(h)
+    v.updateHeightTextView(h)
 }
