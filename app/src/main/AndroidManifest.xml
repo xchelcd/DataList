@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".ui.test.TestActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.add.AddActivity"
             android:exported="false" />
         <activity
@@ -24,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.secondary.SecondaryActivity"></activity>
+        <activity android:name=".ui.secondary.SecondaryActivity" />
     </application>
 
 </manifest>

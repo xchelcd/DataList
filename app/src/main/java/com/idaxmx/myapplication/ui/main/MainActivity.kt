@@ -2,12 +2,12 @@ package com.idaxmx.myapplication.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.idaxmx.myapplication.databinding.ActivityMainBinding
 import com.idaxmx.myapplication.model.User
 import com.idaxmx.myapplication.ui.secondary.SecondaryActivity
+import com.idaxmx.myapplication.ui.test.TestActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -17,15 +17,15 @@ class MainActivity : AppCompatActivity() {
 
     private var viewModel: MainViewModel = MainViewModel(
         listOf(
-            User("123", "Xchel"),
-            User("123", "Alonso"),
-            User("123", "Octavio"),
-            User("123", "Antonio"),
-            User("123", "Darios"),
-            User("123", "Isaac"),
-            User("123", "Eduardo"),
-            User("123", "Jose"),
-            User("123", "Ian"),
+            //User("123", "Xchel"),
+            //User("123", "Alonso"),
+            //User("123", "Octavio"),
+            //User("123", "Antonio"),
+            //User("123", "Darios"),
+            //User("123", "Isaac"),
+            //User("123", "Eduardo"),
+            //User("123", "Jose"),
+            //User("123", "Ian"),
         )
     )
 
@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.state.collect(::render)
         }
+        startActivity(Intent(this, TestActivity::class.java))
     }
 
     private fun handleUserSelected(user: User) {
