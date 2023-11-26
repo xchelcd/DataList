@@ -5,6 +5,13 @@
     tools:context=".ui.test.TestActivity">
 
     <data>
+
+        <import type="com.idaxmx.myapplication.util.extension.MaxHeight"/>
+
+        <variable
+            name="maxHeight"
+            type="MaxHeight" />
+
         <variable
             name="height"
             type="float" />
@@ -14,9 +21,11 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
+
         <com.idaxmx.myapplication.ui.widget.HeightWidget
             android:layout_width="match_parent"
             app:userHeight="@{height}"
+            app:maxUserHeight="@{maxHeight.meters}"
             android:layout_height="match_parent" />
 
     </LinearLayout>

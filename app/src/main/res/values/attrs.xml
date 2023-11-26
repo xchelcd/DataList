@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="HeightWidget">
         <attr name="userHeight" format="float" />
+        <attr name="maxUserHeight" format="float" />
     </declare-styleable>
 </resources>

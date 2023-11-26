@@ -35,6 +35,7 @@
                 tools:layout_constraintGuide_percent="0.55" />
 
             <View
+                android:id="@+id/private_first_view_id"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#ededed"
@@ -56,6 +57,7 @@
                 tools:text="1.73m" />
 
             <View
+                android:id="@+id/private_second_view_id"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/blue"
@@ -75,9 +77,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/private_third_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100cm"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/fifty"
                 app:layout_constraintStart_toEndOf="@id/fifty"
                 app:layout_constraintTop_toTopOf="@id/fifty" />

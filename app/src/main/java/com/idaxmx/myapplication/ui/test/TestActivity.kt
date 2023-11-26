@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.idaxmx.myapplication.databinding.ActivityTestBinding
 import com.idaxmx.myapplication.model.User
+import com.idaxmx.myapplication.util.extension.MaxHeight
 import com.idaxmx.myapplication.util.extension.convertHeightToPercentageBase2m
 
 class TestActivity : AppCompatActivity() {
@@ -23,5 +24,6 @@ class TestActivity : AppCompatActivity() {
         )
 
         binding.height = user.height.convertHeightToPercentageBase2m()
+        binding.maxHeight = MaxHeight.THREE
     }
 }

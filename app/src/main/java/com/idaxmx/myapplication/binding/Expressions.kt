@@ -53,3 +53,8 @@ fun userHeight(v: HeightWidget, h: Float) {
     v.setHeight(h)
     v.updateHeightTextView(h)
 }
+
+@BindingAdapter("app:maxUserHeight")
+fun maxUserHeight(v: HeightWidget, mh: Float) {
+    v.maxUserHeight(mh)
+}
