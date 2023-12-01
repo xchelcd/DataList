@@ -20,7 +20,7 @@ class TestActivity : AppCompatActivity() {
         val user = User(
             id = "someId",
             name = "Xchel",
-            height = 1.73f
+            height = 0.53f
         )
 
         binding.height = user.height.convertHeightToPercentageBase2m()

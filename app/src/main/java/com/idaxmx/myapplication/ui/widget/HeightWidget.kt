@@ -59,9 +59,9 @@ class HeightWidget(
 
         //
 
-
+        /*
         for (i in 0..maxIntValue step 1) { // i = 1 -> 10cm
-            val text = "${1 * 10}fsdgfdfgdfgcm"
+            val text = "${1 * 10}cm"
             val textView = TextView(context)
             textView.id = View.generateViewId()
             textView.textSize = 22f
@@ -93,6 +93,8 @@ class HeightWidget(
         //)
 
         constraintSet.applyTo(constraintLayout)
+
+         */
     }
 
 }
