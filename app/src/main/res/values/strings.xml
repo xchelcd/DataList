@@ -7,5 +7,6 @@
     <string name="add">ADD</string>
     <string name="fields_marked_with_are_required">Fields marked with * are required</string>
     <string name="height">*Height</string>
+    <string name="cm_label">%1$.0fcm</string>
     <string name="user_photo_profile">user photo profile</string>
 </resources>

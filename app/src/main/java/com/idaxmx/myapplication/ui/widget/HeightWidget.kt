@@ -63,7 +63,7 @@ class HeightWidget(
         for(i in 1..maxIntValue) {
             val textView = TextView(context)
             val cm = i * 10f
-            textView.text = "${cm.toInt()}cm"
+            textView.text = context.getString(R.string.cm_label, cm)
             textView.id = View.generateViewId()
 
             val guideline = Guideline(context)
