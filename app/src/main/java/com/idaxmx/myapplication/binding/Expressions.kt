@@ -11,7 +11,7 @@ import com.idaxmx.myapplication.model.User
 import com.idaxmx.myapplication.ui.widget.HeightWidget
 import com.idaxmx.myapplication.ui.widget.UserList
 
-@BindingAdapter("app:onUserSelected")
+@BindingAdapter("onUserSelected")
 fun onUserSelected(v: UserList, callback: CallbackWithUser?) {
     val adapter = v.adapter as UserList.Adapter
     adapter.onUserSelected = { user ->
@@ -19,17 +19,17 @@ fun onUserSelected(v: UserList, callback: CallbackWithUser?) {
     }
 }
 
-@BindingAdapter("app:show")
+@BindingAdapter("show")
 fun showTextView(v: View, list: List<User>?) {
     v.isVisible = list?.isEmpty() ?: true
 }
 
-@BindingAdapter("app:show")
+@BindingAdapter("show")
 fun showTextView(v: View, b: Boolean) {
     v.isVisible = b
 }
 
-@BindingAdapter("app:onTextChange")
+@BindingAdapter("onTextChange")
 fun onTextChange(v: EditText, callbackWithText: CallbackWithText?) {
     v.doOnTextChanged { text, _, _, _ ->
         callbackWithText?.invoke(text.toString())
@@ -37,24 +37,24 @@ fun onTextChange(v: EditText, callbackWithText: CallbackWithText?) {
 }
 
 
-@BindingAdapter("app:onClick")
+@BindingAdapter("onClick")
 fun onClick(b: Button, callback: Callback) {
     b.setOnClickListener { callback() }
 }
 
-@BindingAdapter("app:layout_constraintGuide_percent")
+@BindingAdapter("layout_constraintGuide_percent")
 fun layout_constraintGuide_percent(guideline: Guideline, height: Float) {
     guideline.setGuidelinePercent(height)
 
 }
 
-@BindingAdapter("app:userHeight")
+@BindingAdapter("userHeight")
 fun userHeight(v: HeightWidget, h: Float) {
     v.setHeight(h)
     v.updateHeightTextView(h)
 }
 
-@BindingAdapter("app:maxUserHeight")
+@BindingAdapter("maxUserHeight")
 fun maxUserHeight(v: HeightWidget, mh: Float) {
     v.maxUserHeight(mh)
 }

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.idaxmx.myapplication.databinding.ActivityTestBinding
 import com.idaxmx.myapplication.model.User
 import com.idaxmx.myapplication.util.extension.MaxHeight
-import com.idaxmx.myapplication.util.extension.convertHeightToPercentageBase2m
+import com.idaxmx.myapplication.util.extension.convertHeightToPercentage
 
 class TestActivity : AppCompatActivity() {
 
@@ -15,15 +15,14 @@ class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityTestBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         val user = User(
             id = "someId",
             name = "Xchel",
             height = 1.73f
         )
-
-        binding.height = user.height.convertHeightToPercentageBase2m()
-        binding.maxHeight = MaxHeight.THREE
+        val base = MaxHeight.TWO
+        binding.height = user.height.convertHeightToPercentage(base)
+        binding.maxHeight = base
+        setContentView(binding.root)
     }
 }

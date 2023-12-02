@@ -50,7 +50,8 @@
                 android:layout_width="0dp"
                 android:textColor="@color/black"
                 android:textStyle="italic"
-                android:layout_height="wrap_content" android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@id/height_guideline"
                 app:layout_constraintEnd_toEndOf="@id/fifty_vertical_guideline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +68,7 @@
                 app:layout_constraintTop_toTopOf="@id/height_guideline" />
 
             <View
+                android:visibility="gone"
                 android:id="@+id/fifty"
                 android:layout_width="0dp"
                 android:layout_height="1dp"

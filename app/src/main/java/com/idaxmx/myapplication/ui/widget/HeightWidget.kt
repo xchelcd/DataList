@@ -3,6 +3,7 @@ package com.idaxmx.myapplication.ui.widget
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
@@ -13,7 +14,7 @@ import androidx.constraintlayout.widget.Guideline
 import androidx.databinding.DataBindingUtil
 import com.idaxmx.myapplication.R
 import com.idaxmx.myapplication.databinding.WidgetHeightBinding
-import com.idaxmx.myapplication.util.extension.reverseHeightPercentageBase2m
+import com.idaxmx.myapplication.util.extension.reverseHeightPercentage
 
 class HeightWidget(
     context: Context,
@@ -28,11 +29,13 @@ class HeightWidget(
             true
         )
 
+    private var heightPercentage = 0f
+    private var base = 0
     init {
         context.theme.obtainStyledAttributes(attrs, R.styleable.HeightWidget, 0, 0).apply {
             try {
                 getFloat(R.styleable.HeightWidget_userHeight, 0.5f).let(::setHeight)
-                getFloat(R.styleable.HeightWidget_maxUserHeight, 2f).let(::maxUserHeight)
+                getFloat(R.styleable.HeightWidget_maxUserHeight, 0f).let(::maxUserHeight)
             } finally {
                 recycle()
             }
@@ -44,55 +47,101 @@ class HeightWidget(
     }
 
     fun updateHeightTextView(heightPercentage: Float) {
-        bind.heightTextView.text = heightPercentage.reverseHeightPercentageBase2m()
+        this.heightPercentage = heightPercentage
+        bind.heightTextView.text = heightPercentage.reverseHeightPercentage(base)
     }
 
     /**
      * @param max: values from 1f to nf
      */
     fun maxUserHeight(max: Float) {
-        val aux = bind.heightTextView
-        val maxIntValue: Int = max.toInt() * 10
+        if (max == 0f) return
+        base = max.toInt()
+        updateHeightTextView(this.heightPercentage)
+        val maxIntValue: Int = max.toInt() * 10 // 30
+        // max 300 cm
+        // in 10cm
         val constraintSet = ConstraintSet()
-        val constraintLayout = bind.mainConstraintLayout
 
-
-        //
-
-
-        for (i in 0..maxIntValue step 1) { // i = 1 -> 10cm
-            val text = "${1 * 10}fsdgfdfgdfgcm"
+        for(i in 1..maxIntValue) {
             val textView = TextView(context)
+            val cm = i * 10f
+            textView.text = "${cm.toInt()}cm"
             textView.id = View.generateViewId()
-            textView.textSize = 22f
-            textView.setBackgroundColor(Color.CYAN)
-            textView.text = text
+
             val guideline = Guideline(context)
             guideline.id = View.generateViewId()
-            guideline.setGuidelinePercent((i / 10).toFloat())
-            guideline.layoutParams = ConstraintLayout.LayoutParams(
-                ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                ConstraintLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
+            guideline.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT).apply {
                 orientation = ConstraintLayout.LayoutParams.HORIZONTAL
             }
+            val percentage: Float = 1 - (cm / (maxIntValue * 10))
+            // 10 / 30
+            Log.d("XchelTag", "i: $i, h: $height, p: $percentage")
+            guideline.setGuidelinePercent(percentage)
 
-            bind.mainConstraintLayout.addView(guideline)
+            val auxView = View(context)
+            auxView.id = View.generateViewId()
+            auxView.setBackgroundColor(Color.DKGRAY)
+            auxView.layoutParams = LayoutParams(0, 1)
 
-            //textView.textSize = if (1 % 5 == 0) 22f else 16f
+            bind.mainConstraintLayout.apply {
+                addView(guideline)
+                addView(textView)
+                addView(auxView)
+                constraintSet.clone(this)
+            }
 
+            // top-top
+            constraintSet.connect(
+                textView.id,
+                ConstraintSet.TOP,
+                guideline.id, //
+                ConstraintSet.TOP,
+            )
+            //bottom-bottom
+            constraintSet.connect(
+                textView.id,
+                ConstraintSet.BOTTOM,
+                guideline.id,
+                ConstraintSet.BOTTOM,
+            )
+            // start text view to end fiftyVerticalGuideline
+            constraintSet.connect(
+                textView.id,
+                ConstraintSet.START,
+                bind.fiftyVerticalGuideline.id,
+                ConstraintSet.END,
+            )
 
-            constraintLayout.addView(textView)
+            constraintSet.connect(
+                auxView.id,
+                ConstraintSet.START,
+                ConstraintSet.PARENT_ID,
+                ConstraintSet.START
+            )
+            constraintSet.connect(
+                auxView.id,
+                ConstraintSet.END,
+                bind.fiftyVerticalGuideline.id,
+                ConstraintSet.END
+            )
+            // top-top
+            constraintSet.connect(
+                auxView.id,
+                ConstraintSet.TOP,
+                guideline.id, //
+                ConstraintSet.TOP,
+            )
+            //bottom-bottom
+            constraintSet.connect(
+                auxView.id,
+                ConstraintSet.BOTTOM,
+                guideline.id,
+                ConstraintSet.BOTTOM,
+            )
+            constraintSet.applyTo(bind.mainConstraintLayout)
         }
-        constraintSet.clone(constraintLayout)
-        //constraintSet.connect(
-        //    textView.id, // startId
-        //    ConstraintSet.TOP, // startSide ***
-        //    aux.id, // endId
-        //    ConstraintSet.BOTTOM, // endSide ***
-        //)
 
-        constraintSet.applyTo(constraintLayout)
     }
 
 }

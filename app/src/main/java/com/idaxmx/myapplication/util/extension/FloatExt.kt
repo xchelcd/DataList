@@ -7,6 +7,5 @@ enum class MaxHeight(val meters: Float) {
     FIVE(5f),
 }
 
-fun Float.convertHeightToPercentageBase2m(): Float = 1 - (this / MaxHeight.TWO.meters)
-
-fun Float.reverseHeightPercentageBase2m(): String = "${-2 * (this - 1)}m"
+fun Float.convertHeightToPercentage(base: MaxHeight): Float = 1 - (this / base.meters)
+fun Float.reverseHeightPercentage(base: Int): String = "${-base * (this - 1)}m"
