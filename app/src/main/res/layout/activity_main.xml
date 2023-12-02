@@ -41,7 +41,7 @@
         <EditText
             android:layout_width="match_parent"
             app:onTextChange="@{handleFilter}"
-            app:show="@{!state.list.empty}"
+
             android:layout_height="wrap_content"/>
 
         <com.idaxmx.myapplication.ui.widget.UserList
