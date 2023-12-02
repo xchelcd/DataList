@@ -3,7 +3,6 @@ package com.idaxmx.myapplication.ui.widget
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
@@ -58,9 +57,7 @@ class HeightWidget(
         if (max == 0f) return
         base = max.toInt()
         updateHeightTextView(this.heightPercentage)
-        val maxIntValue: Int = max.toInt() * 10 // 30
-        // max 300 cm
-        // in 10cm
+        val maxIntValue: Int = max.toInt() * 10
         val constraintSet = ConstraintSet()
 
         for(i in 1..maxIntValue) {
@@ -75,8 +72,6 @@ class HeightWidget(
                 orientation = ConstraintLayout.LayoutParams.HORIZONTAL
             }
             val percentage: Float = 1 - (cm / (maxIntValue * 10))
-            // 10 / 30
-            Log.d("XchelTag", "i: $i, h: $height, p: $percentage")
             guideline.setGuidelinePercent(percentage)
 
             val auxView = View(context)
